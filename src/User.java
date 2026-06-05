@@ -97,6 +97,9 @@ public class User implements Serializable {
             } else if (!email.contains("@")) {
                 System.out.println("Your email must have @ in it, to show that it is an email.\nEnter your email:");
                 email = scn.nextLine();
+            } else if (Finder.search(email, 3) != -1) {
+                System.out.println("You are not allowed to create more than 1 account by using 1 email.\nEnter your email:");
+                email = scn.nextLine();
             } else {
                 String[] garbage;
                 garbage = email.split("@");

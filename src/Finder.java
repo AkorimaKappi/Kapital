@@ -20,7 +20,7 @@ public class Finder {
             if (!users.get(k).getUsername().equals(param)) {
                 k = -1;
             }
-        } else {
+        } else if(n==2) {
             for (User x : users) {
                 k++;
                 if (x.getId() == (Integer) param) {
@@ -30,6 +30,17 @@ public class Finder {
             if (!(users.get(k).getId() == (Integer) param)) {
                 k = -1;
             }
+        }
+        else{
+                for (User x : users) {
+                    k++;
+                    if (x.getEmail().equals(param)) {
+                        break;
+                    }
+                }
+                if (!users.get(k).getEmail().equals(param)) {
+                    k = -1;
+                }
         }
         return k;
     }
