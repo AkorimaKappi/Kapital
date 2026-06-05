@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class FileWorker {
     private static final File file = new File("users.dat");
 
-    public static void newFile() throws IOException {
+    public static void createFile() throws IOException {
         if (file.createNewFile()) {
             System.out.println("Created file for saving users. File:" + file.getName());
         } else {

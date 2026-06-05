@@ -1,44 +1,41 @@
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Finder {
-    private static final Scanner scn = new Scanner(System.in);
-
     public static <T> int search(T param, int n) {
-        ArrayList<User> users = FileWorker.readFile();
-        if (users.isEmpty()) {
+        if (UsersDatabaseController.getUsers().isEmpty()) {
             return -2;
         }
         int k = -1;
         switch (n) {
             case 1 -> {
-                for (User x : users) {
+                for (User x : UsersDatabaseController.getUsers()) {
                     k++;
                     if (x.getUsername().equals(param)) {
                         break;
                     }
-                }   if (!users.get(k).getUsername().equals(param)) {
+                }
+                if (!UsersDatabaseController.getUsers().get(k).getUsername().equals(param)) {
                     k = -1;
                 }
             }
             case 2 -> {
-                for (User x : users) {
+                for (User x : UsersDatabaseController.getUsers()) {
                     k++;
                     if (x.getId() == (Integer) param) {
                         break;
                     }
-                }   if (!(users.get(k).getId() == (Integer) param)) {
+                }
+                if (!(UsersDatabaseController.getUsers().get(k).getId() == (Integer) param)) {
                     k = -1;
                 }
             }
             default -> {
-                for (User x : users) {
+                for (User x : UsersDatabaseController.getUsers()) {
                     k++;
                     if (x.getEmail().equals(param)) {
                         break;
                     }
                 }
-                if (!users.get(k).getEmail().equals(param)) {
+                if (!UsersDatabaseController.getUsers().get(k).getEmail().equals(param)) {
                     k = -1;
                 }
             }
@@ -49,7 +46,7 @@ public class Finder {
     public static int findUser(int choice) {
         while (choice == 1) {
             System.out.println("Enter the username you search for:");
-            String searchUsName = scn.nextLine();
+            String searchUsName = InputSection.SCN.nextLine();
             int intUser = search(searchUsName, 1);
             if (intUser == -1) {
                 System.out.println("Wrong Username.\nTry again.\n");
@@ -59,7 +56,7 @@ public class Finder {
         }
         while (true) {
             System.out.println("Enter the ID you search for:");
-            int searchId = InputChecker.wasInt();
+            int searchId = InputSection.wasInt();
             int intId = search(searchId, 2);
             if (searchId < 99999 || searchId >= 999999 || intId == -1) {
                 System.out.println("Wrong Id.\nTry again.\n");
