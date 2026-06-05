@@ -10,28 +10,28 @@ public class Finder {
             return -2;
         }
         int k = -1;
-        if (n == 1) {
-            for (User x : users) {
-                k++;
-                if (x.getUsername().equals(param)) {
-                    break;
+        switch (n) {
+            case 1 -> {
+                for (User x : users) {
+                    k++;
+                    if (x.getUsername().equals(param)) {
+                        break;
+                    }
+                }   if (!users.get(k).getUsername().equals(param)) {
+                    k = -1;
                 }
             }
-            if (!users.get(k).getUsername().equals(param)) {
-                k = -1;
-            }
-        } else if(n==2) {
-            for (User x : users) {
-                k++;
-                if (x.getId() == (Integer) param) {
-                    break;
+            case 2 -> {
+                for (User x : users) {
+                    k++;
+                    if (x.getId() == (Integer) param) {
+                        break;
+                    }
+                }   if (!(users.get(k).getId() == (Integer) param)) {
+                    k = -1;
                 }
             }
-            if (!(users.get(k).getId() == (Integer) param)) {
-                k = -1;
-            }
-        }
-        else{
+            default -> {
                 for (User x : users) {
                     k++;
                     if (x.getEmail().equals(param)) {
@@ -41,6 +41,7 @@ public class Finder {
                 if (!users.get(k).getEmail().equals(param)) {
                     k = -1;
                 }
+            }
         }
         return k;
     }
