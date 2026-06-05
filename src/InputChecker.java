@@ -1,9 +1,10 @@
 import java.util.Scanner;
 
-public class InputCheck {
+public class InputChecker {
     private static final Scanner scn = new Scanner(System.in);
-    public static int wasInt(){
-        while (!scn.hasNextInt()){
+
+    public static int wasInt() {
+        while (!scn.hasNextInt()) {
             scn.nextLine();
             System.out.println("This parameter may consist of integers only\nTry again.");
         }
